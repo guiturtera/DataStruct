@@ -1,5 +1,4 @@
 ﻿using System;
-using Linear_data_struct.Interfaces;
 
 namespace Linear_data_struct
 {
@@ -43,7 +42,7 @@ namespace Linear_data_struct
     public class StaticStack<T> : IStack<T>
     {
         public int Count { get; private set; }
-        private int maxStackSize = 200;
+        private int maxStackSize;
         private T[] data;
 
         public StaticStack()
@@ -54,7 +53,7 @@ namespace Linear_data_struct
         }
         public void Push(T value)
         {
-            if (Count == 200) throw new StackOverflowException("StackOverflow!");
+            if (Count == maxStackSize) throw new StackOverflowException("StackOverflow!");
 
             this.data[Count] = value;
             this.Count++;
@@ -62,6 +61,8 @@ namespace Linear_data_struct
 
         public T Pop()
         {
+            if (Count == 0) throw new Exception("The stack don't have any element!");
+
             T aux = this.data[Count - 1];
             this.data[Count - 1] = default(T);
             Count--;

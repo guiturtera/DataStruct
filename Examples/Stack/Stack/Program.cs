@@ -11,10 +11,10 @@ namespace Stack
     // It's not focused on SOLID patterns, so don't follow this as a base design project!!
     class Program
     {
-        static StaticStack<Employee> employee;
+        static IStack<Employee> employee;
         static void Main(string[] args)
         {
-            employee = new StaticStack<Employee>();
+            employee = new DynamicStack<Employee>();
             ConsoleKey key;
             do
             {
@@ -49,7 +49,7 @@ namespace Stack
 
         }
 
-        static void ListStackData<T>(StaticStack<T> stack)
+        static void ListStackData<T>(IStack<T> stack)
         {
             int initialCounter = stack.Count;
             T[] aux = new T[initialCounter];
@@ -67,7 +67,7 @@ namespace Stack
             }
         }
 
-        static public void ShowSumOfWages(StaticStack<Employee> employees)
+        static public void ShowSumOfWages(IStack<Employee> employees)
         {
             int initialCounter = employees.Count;
             double sum = 0;
@@ -86,7 +86,7 @@ namespace Stack
             Console.WriteLine(sum.ToString());
         }
 
-        static public void RemoveStackBottom<T>(StaticStack<T> stack)
+        static public void RemoveStackBottom<T>(IStack<T> stack)
         {
             int initialCounter = stack.Count;
             T[] aux = new T[initialCounter];

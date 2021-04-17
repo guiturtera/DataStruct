@@ -8,6 +8,7 @@ This repo will filled with different DataStruct samples.
 - Datatypes
   - Stack
 	- Static stack
+	- Dynamic stack
 
 ## Examples
 - Stack

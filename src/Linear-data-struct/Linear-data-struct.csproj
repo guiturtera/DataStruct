@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DynamicStack.cs" />
     <Compile Include="Interfaces\IStack.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="StaticStack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
