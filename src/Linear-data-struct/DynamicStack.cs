@@ -26,7 +26,7 @@ namespace Linear_data_struct
     **     Returns the amount of data inside the Stack.
 
     ** TECHNICAL INFO:
-    **     Contiguous storage -> YES
+    **     Contiguous storage -> NO
     **     Insert Method (Push), in the worst case, is [O (1)]
     **     Search Method (Pop), in the worst case, is [O(1)]
     ** 
@@ -55,7 +55,7 @@ namespace Linear_data_struct
             this.topNode = null;
         }
 
-        public T Pick()
+        public T Peek()
         {
             return topNode.Value;
         }

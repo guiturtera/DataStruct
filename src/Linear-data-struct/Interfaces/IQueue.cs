@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Linear_data_struct
 {
-    /// <summary>
-    /// // This interface will contain the main Stack Methods
-    /// </summary>
-    public interface IStack<T>
+    public interface IQueue<T>
     {
         int Count { get; }
-        void Push(T value);
-        T Pop();
+        T Dequeue();
+        void Enqueue(T value);
         T Peek();
     }
 }

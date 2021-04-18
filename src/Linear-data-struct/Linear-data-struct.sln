@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linear-data-struct", "Linea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stack", "..\..\Examples\Stack\Stack\Stack.csproj", "{33B3A972-8279-4592-989A-60435B8690E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queue", "..\..\Examples\Queue\Queue.csproj", "{691687C1-37A2-4869-9461-D2A965DBB0EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{33B3A972-8279-4592-989A-60435B8690E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33B3A972-8279-4592-989A-60435B8690E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33B3A972-8279-4592-989A-60435B8690E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{691687C1-37A2-4869-9461-D2A965DBB0EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{691687C1-37A2-4869-9461-D2A965DBB0EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{691687C1-37A2-4869-9461-D2A965DBB0EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{691687C1-37A2-4869-9461-D2A965DBB0EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

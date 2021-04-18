@@ -69,7 +69,7 @@ namespace Linear_data_struct
             return aux;
         }
 
-        public T Pick()
+        public T Peek()
         {
             return this.data[Count - 1];
         }

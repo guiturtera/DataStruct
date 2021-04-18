@@ -9,6 +9,8 @@ This repo will filled with different DataStruct samples.
   - Stack
 	- Static stack
 	- Dynamic stack
+  - Queue
+	- Static queue
 
 ## Examples
 - Stack
