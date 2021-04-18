@@ -14,6 +14,7 @@ This repo will filled with different DataStruct samples.
 
 ## Examples
 - Stack
+- Queue
   
 ### Warning
 This repo is not focused on SOLID patterns, so don't follow this as a base design project!!
