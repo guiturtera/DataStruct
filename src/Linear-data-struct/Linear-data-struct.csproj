@@ -41,14 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircularQueue.cs" />
-    <Compile Include="DynamicQueue.cs" />
-    <Compile Include="DynamicStack.cs" />
-    <Compile Include="Interfaces\IQueue.cs" />
-    <Compile Include="Interfaces\IStack.cs" />
+    <Compile Include="List\IList.cs" />
+    <Compile Include="List\StaticList.cs" />
+    <Compile Include="Queue\CircularQueue.cs" />
+    <Compile Include="Queue\DynamicQueue.cs" />
+    <Compile Include="Stack\DynamicStack.cs" />
+    <Compile Include="Queue\IQueue.cs" />
+    <Compile Include="Stack\IStack.cs" />
     <Compile Include="Node.cs" />
-    <Compile Include="StaticQueue.cs" />
-    <Compile Include="StaticStack.cs" />
+    <Compile Include="Queue\StaticQueue.cs" />
+    <Compile Include="Stack\StaticStack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
