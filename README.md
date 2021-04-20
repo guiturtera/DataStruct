@@ -12,6 +12,7 @@ This repo will filled with different DataStruct samples.
   - Queue
 	- Static queue
 	- Circular queue
+	- Dynamic queue
 
 ## Examples
 - Stack

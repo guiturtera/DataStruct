@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Linear_data_struct;
+using System.Reflection;
 
 namespace Queue
 {
@@ -17,11 +18,13 @@ namespace Queue
             Console.WriteLine(Environment.NewLine + "8 Tests for CircularQueue: ");
             for (int i = 0; i < 8; i++)
             {
-                Console.Write("{0}°", i + 1);
+                Console.Write("{0}° ", i + 1);
                 AssertQueue(circularQueue);
             }
 
             Console.WriteLine();
+            AssertQueue(new DynamicQueue<string>());
+
 
             Console.ReadKey();
         }
@@ -43,9 +46,9 @@ namespace Queue
                 resultText += queue.Dequeue();
 
             if (resultText == assertText)
-                Console.WriteLine("Queue works!!");
+                Console.WriteLine("{0} -- works!!", queue.GetType().Name);
             else
-                Console.WriteLine("Queue doesn't work!");
+                Console.WriteLine("{0} -- doesn't work!", queue.GetType().Name);
         }
     }
 }

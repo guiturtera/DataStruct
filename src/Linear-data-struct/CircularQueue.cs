@@ -30,11 +30,11 @@ namespace Linear_data_struct
      ** TECHNICAL INFO:
      **     Contiguous storage -> YES
      **     Insert Method (Enqueue), in the worst case, is [O (1)]
-     **     Search Method (Dequeue), in the worst case, is [O(N)]
+     **     Search Method (Dequeue), in the worst case, is [O(1)]
      ** 
      
      ** PROS
-     **     A normal queue is fast for handling, though this one is not the recommended one to be used.
+     **     Fast for handling in specific problems.
      ** CONS
      **     Not flexible
      **     You can not search for a specific data.
