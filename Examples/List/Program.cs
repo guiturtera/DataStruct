@@ -12,6 +12,8 @@ namespace List
         static void Main(string[] args)
         {
             AssertMultipleList(new StaticList<string>(), 10);
+            AssertMultipleList(new LinkedList<string>(), 10);
+
             Console.WriteLine();
 
             Console.ReadKey();

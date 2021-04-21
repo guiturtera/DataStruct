@@ -15,6 +15,7 @@ This repo will filled with different DataStruct samples.
 	- Dynamic queue
   - List
 	- Static list
+	- Linked list
 
 ## Examples
 - Stack

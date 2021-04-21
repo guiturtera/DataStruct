@@ -8,7 +8,7 @@ namespace Linear_data_struct
 {
     public class Node<T>
     {
-        public Node(T value, Node<T> nextNode) 
+       public Node(T value, Node<T> nextNode) 
         {
             this.NextNode = nextNode;
             this.Value = value;
