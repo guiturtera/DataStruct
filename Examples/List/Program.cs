@@ -14,9 +14,24 @@ namespace List
             AssertMultipleList(new StaticList<string>(), 10);
             AssertMultipleList(new LinkedList<string>(), 10);
 
+            AssertDoublyList();
+
             Console.WriteLine();
 
             Console.ReadKey();
+        }
+
+        private static void AssertDoublyList()
+        {
+            DoublyLinkedList<string> list = new DoublyLinkedList<string>();
+            list.Add("a");
+            list.Add("b");
+            list.Add("c");
+            Assert("abc", list.DisplayForward(), "Display forward ");
+            Assert("cba", list.DisplayBackward(), "Display backward ");
+            list.Clear();
+
+            AssertMultipleList(list, 10);
         }
 
         private static void AssertMultipleList(IList<string> list, int assertsAmount)

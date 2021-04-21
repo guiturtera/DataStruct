@@ -9,6 +9,7 @@ namespace Linear_data_struct
     {
         // This example uses the conceptual SinglyLinkedList, which is not so efficient.
         // You could add Sentinel Nodes, for fast handling data.
+        // It can also be Implemented as a CircularLinkedList, that will be, the last node will point to the first one.
         public int Count { get; private set; }
         private Node<T> firstNode;
 

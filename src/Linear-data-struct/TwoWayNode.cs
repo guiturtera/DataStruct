@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace Linear_data_struct
 {
-    public class Node<T>
+    public class TwoWayNode<T>
     {
-        public Node(T value, Node<T> nextNode) 
+        public TwoWayNode(T value, TwoWayNode<T> previousNode, TwoWayNode<T> nextNode)
         {
             this.NextNode = nextNode;
+            this.PreviousNode = previousNode;
             this.Value = value;
         }
-        public Node<T> NextNode { get; set; }
+
+        public TwoWayNode<T> NextNode { get; set; }
+        public TwoWayNode<T> PreviousNode { get; set; }
         public T Value { get; set; }
     }
 }
