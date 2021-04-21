@@ -13,10 +13,13 @@ This repo will filled with different DataStruct samples.
 	- Static queue
 	- Circular queue
 	- Dynamic queue
+  - List
+	- Static list
 
 ## Examples
 - Stack
 - Queue
+- List
   
 ### Warning
 This repo is not focused on SOLID patterns, so don't follow this as a base design project!!

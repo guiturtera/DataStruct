@@ -14,9 +14,7 @@ namespace Linear_data_struct
         bool Remove(T data);
         void RemoveAt(int index);
         void Insert(T value, int index);
-        T GetTop();
-        T GetBottom();
-        T GetAtt(int index);
+        T GetAt(int index);
     }
     
 }
