@@ -16,6 +16,7 @@ This repo will filled with different DataStruct samples.
   - List
 	- Static list
 	- Linked list
+	- Doubly linked list
 
 ## Examples
 - Stack

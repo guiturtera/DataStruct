@@ -31,18 +31,26 @@ namespace Linear_data_struct
 
         /// <summary>
         /// Clear all list data. O(N)
+        /// /// Here I am not making any data Dispose, though it should be done. I'm just deleting all refs, 
+        ///     like disposing, but making them null. 
         /// </summary>
         public void Clear()
         {
+            /*
             Node<T> previousNode = firstNode;
             Node<T> nextNode = firstNode.NextNode;
 
+            // It should be disposed as this example, although it is not doing anything:
             for (int i = 0; i < Count - 1; i++)
             {
                 previousNode = null;
                 previousNode = nextNode;
                 nextNode = nextNode.NextNode;
             }
+            */
+
+            // Only to simplify, I'll clear first node and make the Count 0. Garbage Collector will do the rest
+            firstNode = null;
             Count = 0;
         }
         
@@ -105,7 +113,7 @@ namespace Linear_data_struct
         /// <param name="index">Index delete the data.</param>
         public void RemoveAt(int index)
         {
-            if (index < 0 || index > Count) throw new Exception("Invalid index!");
+            if (index < 0 || index >= Count) throw new Exception("Invalid index!");
             
             if (index != 0)
             {

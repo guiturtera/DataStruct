@@ -65,18 +65,27 @@ namespace Linear_data_struct
 
         /// <summary>
         /// Clear all list data. O(N)
+        /// Here I am not making any data Dispose, though it should be done. I'm just deleting all refs, 
+        ///     like disposing, but making them null. 
         /// </summary>
         public void Clear()
         {
+            /*
             TwoWayNode<T> previousNode = firstNode;
             TwoWayNode<T> nextNode = firstNode.NextNode;
 
+            // It should be disposed as this example, although it is not doing anything:
             for (int i = 0; i < Count - 1; i++)
             {
                 previousNode = null;
                 previousNode = nextNode;
                 nextNode = nextNode.NextNode;
             }
+            */
+
+            // Only to simplify, I'll clear both first and top nodes, and make the Count 0. Garbage Collector will do the rest
+            firstNode = null;
+            lastNode = null;
             Count = 0;
         }
 
@@ -121,7 +130,7 @@ namespace Linear_data_struct
                 }
                 else
                 {
-                    TwoWayNode<T> previousNode = GetNodeFromIndex(index);
+                    TwoWayNode<T> previousNode = GetNodeFromIndex(index - 1);
                     TwoWayNode<T> nextNode = previousNode.NextNode;
 
                     nextNode.PreviousNode = nodeToAdd;
@@ -150,26 +159,38 @@ namespace Linear_data_struct
         }
 
         /// <summary>
-        /// Remoev a data from the List at a specified index.
+        /// Remove a data from the List at a specified index.
         /// </summary>
         /// <param name="index">Index delete the data.</param>
         public void RemoveAt(int index)
         {
-            if (index < 0 || index > Count) throw new Exception("Invalid index!");
+            if (index < 0 || index >= Count) throw new Exception("Invalid index!");
 
-            if (index != 0)
+            if (Count == 1)
             {
-                TwoWayNode<T> previousNode = GetNodeFromIndex(index - 1);
-                TwoWayNode<T> nodeToRemove = previousNode.NextNode;
-                TwoWayNode<T> nextNode = nodeToRemove.NextNode;
-
-                previousNode.NextNode = nextNode;
-                nodeToRemove = null;
+                firstNode = null;
+                lastNode = null;
             }
-            else
+            else if (index == 0)
             {
                 TwoWayNode<T> nodeToRemove = firstNode;
                 firstNode = nodeToRemove.NextNode;
+                nodeToRemove = null;
+            }
+            else if (index == Count - 1)
+            {
+                TwoWayNode<T> nodeToRemove = lastNode;
+                lastNode = nodeToRemove.PreviousNode;
+                nodeToRemove = null;
+            }
+            else if (index != 0)
+            {
+                TwoWayNode<T> nodeToRemove = GetNodeFromIndex(index);
+                TwoWayNode<T> previousNode = nodeToRemove.PreviousNode;
+                TwoWayNode<T> nextNode = nodeToRemove.NextNode;
+
+                previousNode.NextNode = nextNode;
+                nextNode.PreviousNode = previousNode;
                 nodeToRemove = null;
             }
             Count--;

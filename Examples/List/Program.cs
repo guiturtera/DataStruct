@@ -14,24 +14,35 @@ namespace List
             AssertMultipleList(new StaticList<string>(), 10);
             AssertMultipleList(new LinkedList<string>(), 10);
 
-            AssertDoublyList();
+            AssertDoublyList(5);
 
             Console.WriteLine();
 
             Console.ReadKey();
         }
 
-        private static void AssertDoublyList()
+        private static void AssertDoublyList(int assertsAmount)
         {
-            DoublyLinkedList<string> list = new DoublyLinkedList<string>();
-            list.Add("a");
-            list.Add("b");
-            list.Add("c");
-            Assert("abc", list.DisplayForward(), "Display forward ");
-            Assert("cba", list.DisplayBackward(), "Display backward ");
-            list.Clear();
+            for (int i = 0; i < assertsAmount; i++)
+            {
+                DoublyLinkedList<string> list = new DoublyLinkedList<string>();
 
-            AssertMultipleList(list, 10);
+                list.Add("a");
+                list.RemoveAt(0);
+                Assert("Null list", list.DisplayForward(), list.GetType().Name + "Remove at Count = 1");
+
+                string expected = "0abcd6efghijklnopqrstuvwxy";
+
+                string inverseExpected = expected.Reverse<char>().ToString();
+                char[] aux = expected.ToCharArray();
+                Array.Reverse(aux);
+                inverseExpected = new string(aux);
+
+                FillListForAssert(list);
+                Assert(expected, list.DisplayForward(), list.GetType().Name + "DisplayForward()");
+                Assert(inverseExpected, list.DisplayBackward(), list.GetType().Name + "DisplayBackward()");
+                list.Clear();
+            }
         }
 
         private static void AssertMultipleList(IList<string> list, int assertsAmount)
@@ -39,6 +50,7 @@ namespace List
             for (int i = 0; i < assertsAmount; i++)
             {
                 AssertList(list);
+                list.Clear();
             }
             Console.WriteLine();
         }
@@ -51,7 +63,6 @@ namespace List
             string result = GetListResultForAssert(list);
 
             Assert(expected, result, list.GetType().Name);
-            list.Clear();
         }
 
         private static string GetListResultForAssert(IList<string> list)
@@ -92,7 +103,15 @@ namespace List
             if (expected == result)
                 WriteBackgroundColorLine(caller + " - works!", ConsoleColor.Green);
             else
-                WriteBackgroundColorLine(caller + " - doesn't work!", ConsoleColor.Red);
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.AppendLine(caller + " - doesn't work!");
+                builder.Append("Expected -> ");
+                builder.AppendLine(expected);
+                builder.Append("Result -> ");
+                builder.AppendLine(result);
+                WriteBackgroundColorLine(builder.ToString(), ConsoleColor.Red);
+            }
         }
     }
 }
