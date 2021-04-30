@@ -17,6 +17,7 @@ This repo will filled with different DataStruct samples.
 	- Static list
 	- Linked list
 	- Doubly linked list
+  - BinarySearchTree (Doing)
 - Recursive Programming
   - Four code examples
 
