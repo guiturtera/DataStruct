@@ -17,7 +17,7 @@ namespace Non_linear_data_struct
         // IT WILL ALWAYS INSERT AT A LEAF NODE.
         // It's worst case is O(height).
         // Obs: Height is the maximum path length existing in a tree.
-        public void Insert(int value)
+        public virtual void Insert(int value)
         {
             Node nodeToCreate = new Node(value, null, null);
             if (root == null)
