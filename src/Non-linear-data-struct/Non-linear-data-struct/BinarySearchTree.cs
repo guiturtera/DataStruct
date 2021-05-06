@@ -17,7 +17,7 @@ namespace Non_linear_data_struct
         // IT WILL ALWAYS INSERT AT A LEAF NODE.
         // It's worst case is O(height).
         // Obs: Height is the maximum path length existing in a tree.
-        public virtual void Insert(int value)
+        public virtual Node Insert(int value)
         {
             Node nodeToCreate = new Node(value, null, null);
             if (root == null)
@@ -42,6 +42,7 @@ namespace Non_linear_data_struct
                 else
                     parentCurrentNode.Right = nodeToCreate;
             }
+            return nodeToCreate;
         }
 
         // Search for a node and returns if the value exists.
@@ -98,7 +99,7 @@ namespace Non_linear_data_struct
             return Height(root);
         }
 
-        private int Height(Node currentNode)
+        public virtual int Height(Node currentNode)
         {
             int heightLeft, heightRight;
             if (currentNode == null)

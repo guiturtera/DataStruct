@@ -15,17 +15,17 @@ namespace Non_linear_data_struct
             this.Right = rightNode;
         }
 
-        public Node(int value, Node leftNode, Node rightNode, int balance)
+        public Node(int value, Node leftNode, Node rightNode, int height)
         {
             this.Value = value;
             this.Left = leftNode;
             this.Right = rightNode;
-            this.Balance = balance;
+            this.Height = height;
         }
 
         public Node Left { get; set; }
         public Node Right { get; set; }
         public int Value { get; set; }
-        public int Balance { get; set; }
+        public int Height { get; set; }
     }
 }

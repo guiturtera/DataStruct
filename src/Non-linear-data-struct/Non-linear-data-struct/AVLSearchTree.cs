@@ -8,134 +8,120 @@ namespace Non_linear_data_struct
 {
     public class AVLSearchTree : BinarySearchTree
     {
-        private bool hasInserted;
-        public override void Insert(int value)
+        // Only Insertion Method added.
+        Node RightRotate(Node y)
         {
-            if (root == null)
-            {
-                root = new Node(value, null, null, 0);
-                return;
-            }
-            hasInserted = false;
-            Insert(value, root);
+            Node x = y.Left;
+            Node T2 = x.Right;
+
+            // Perform rotation
+            x.Right = y;
+            y.Left = T2;
+
+            // Update heights
+            UpdateHeight(y);
+            UpdateHeight(x);
+
+            // Return new root
+            return x;
         }
 
-        private Node Insert(int value, Node current)
+        // A utility function to left
+        // rotate subtree rooted with x
+        // See the diagram given above.
+        Node LeftRotate(Node x)
         {
-            if (current == null)
-            {
-                current = new Node(value, null, null, 0);
-                return current;
-            }
+            Node y = x.Right;
+            Node T2 = y.Left;
 
-            // WILL GO THROUGH THE TREE UNTILL FOUND NODE IS NULL
-            if (value < current.Value)
-            {
-                current.Left = Insert(value, current.Left);
-                if (!hasInserted) 
-                {
-                    // SWITCH FOR BALANCED CASES
-                    switch (current.Balance)
-                    {
-                        // Right heavy, will turn int balanced.
-                        case -1:
-                            current.Balance = 0;
-                            hasInserted = true;
-                            break;
-                        // Tree balanced will turn into LeftHeavy.
-                        case 0:
-                            current.Balance = 1;
-                            break;
-                        // Case LeftHeavy, will do:
-                        case 1:
-                            Node child = current.Left;
-                            if (child.Balance == 1)
-                            {
-                                // Will do LL rotation (Left to Left)
-                                current.Left = child.Right;
-                                child.Right = current;
-                                current.Balance = 0;
-                                child.Balance = 0;
-                                current = child;
-                            }
-                            else
-                            {
-                                // Will do LR rotation (Left to right)
-                                Node aux = child.Right;
-                                child.Right = aux.Left;
-                                aux.Left = child;
-                                current.Left = aux.Right;
-                                aux.Right = current;
-                                if (aux.Balance == 1)
-                                    current.Balance = -1;
-                                else
-                                    current.Balance = 0;
-                                if (aux.Balance == -1)
-                                    child.Balance = 1;
-                                else
-                                    child.Balance = 0;
-                                aux.Balance = 0;
-                                current = aux;
-                            }
-                            break;
-                    }
-                    hasInserted = true;
-                }
-            }
-            else if (value > current.Value)
-            {
-                current.Right = Insert(value, current.Right);
+            // Perform rotation
+            y.Left = x;
+            x.Right = T2;
 
-                if (!hasInserted)
-                {
-                    switch (current.Balance)
-                    {
-                        // Left heavy, will turn int balanced.
-                        case -1:
-                            current.Balance = 0;
-                            hasInserted = true;
-                            break;
-                        // Tree balanced will turn into RightHeavy.
-                        case 0:
-                            current.Balance = 1;
-                            break;
-                        // Case RightHeavy, will do:
-                        case 1:
-                            Node child = current.Right;
-                            if (child.Balance == 1)
-                            {
-                                // Will do LL rotation (Left to Left)
-                                current.Right = child.Left;
-                                child.Left = current;
-                                current.Balance = 0;
-                                child.Balance = 0;
-                                current = child;
-                            }
-                            else
-                            {
-                                // Will do LR rotation (Left to right)
-                                Node aux = child.Left;
-                                child.Left = aux.Right;
-                                aux.Right = child;
-                                current.Right = aux.Left;
-                                aux.Left = current;
-                                if (aux.Balance == -1)
-                                    current.Balance = 1;
-                                else
-                                    current.Balance = 0;
-                                if (aux.Balance == 1)
-                                    child.Balance = 1;
-                                else
-                                    child.Balance = 0;
-                                aux.Balance = 0;
-                                current = aux;
-                            }
-                            break;
-                    }
-                    hasInserted = true;
-                }
-            }
-            return current;
+            // Update heights
+            UpdateHeight(x);
+            UpdateHeight(y);
+
+            // Return new root
+            return y;
         }
+
+        public override Node Insert(int value)
+        {
+            root = Insert(root, value);
+            return root;
+        }
+
+        private Node Insert(Node currentNode, int value)
+        {
+            if (currentNode == null)
+                return new Node(value, null, null, 0);
+
+            // WILL MAKE HERE A VALIDATION FOR NOT REPEATED VALUES.
+            // HERE THE PROGRAM IS RECUSIVE.
+            if (value < currentNode.Value)
+                currentNode.Left = Insert(currentNode.Left, value);
+            else if (value > currentNode.Value)
+                currentNode.Right = Insert(currentNode.Right, value);
+            else
+                throw new Exception("Same keys cannot be put in the same BST!");
+
+            UpdateHeight(currentNode);
+            int balance = GetBalance(currentNode);
+
+            return CheckBalanceNode(currentNode, balance, value);
+        }
+
+        private Node CheckBalanceNode(Node currentNode, int balance, int value)
+        {
+            // Left Left Case
+            if (balance > 1 && value < currentNode.Left.Value)
+            {
+                return RightRotate(currentNode);
+            }
+            // Right Right Case
+            if (balance < -1 && value > currentNode.Right.Value)
+            {
+                return LeftRotate(currentNode);
+            }
+            // Left Right Case
+            if (balance > 1 && value > currentNode.Left.Value)
+            {
+                currentNode.Left = LeftRotate(currentNode.Left);
+                return RightRotate(currentNode);
+            }
+            // Right Left Case
+            if (balance < -1 && value < currentNode.Right.Value)
+            {
+                currentNode.Right = RightRotate(currentNode.Right);
+                return LeftRotate(currentNode);
+            }
+
+            return currentNode;
+        }
+
+        private void UpdateHeight(Node currentNode)
+        {
+            int left = Height(currentNode.Left);
+            int right = Height(currentNode.Right);
+            if (left > right)
+                currentNode.Height = 1 + left;
+            else
+                currentNode.Height = 1 + right;
+        }
+
+        private int GetBalance(Node node)
+        {
+            return Height(node.Left) - Height(node.Right);
+        }
+
+        public override int Height(Node currentNode)
+        {
+            if (currentNode == null)
+                return 0;
+
+            return currentNode.Height;
+        }
+
     }
 }

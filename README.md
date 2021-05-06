@@ -18,7 +18,9 @@ This repo will filled with different DataStruct samples.
 	- Linked list
 	- Doubly linked list
   - Tree
-    - BinarySearchTree
+    - BinarySearchTree (BST)
+	- AVLBinaryTree (Only Insertion)
+	- Overview About BST (AVL, Red-Black, Splay)
 - Recursive Programming
   - Four code examples
 
