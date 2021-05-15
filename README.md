@@ -28,6 +28,7 @@ This repo will filled with different DataStruct samples.
 - Stack
 - Queue
 - List
+- ArrayBinarySearch
   
 ### Warning
 This repo is not focused on SOLID patterns, so don't follow this as a base design project!!
