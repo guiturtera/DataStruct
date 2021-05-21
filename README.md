@@ -23,6 +23,8 @@ This repo will filled with different DataStruct samples.
 	- Overview About BST (AVL, Red-Black, Splay)
 - Recursive Programming
   - Four code examples
+- Sort
+  - QuickSort  
 
 ## Examples
 - Stack
