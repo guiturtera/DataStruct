@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AVLSearchTree.cs" />
+    <Compile Include="BinaryHeap.cs" />
     <Compile Include="BinarySearchTree.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

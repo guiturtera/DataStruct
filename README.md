@@ -21,6 +21,7 @@ This repo will filled with different DataStruct samples.
     - BinarySearchTree (BST)
 	- AVLBinaryTree (Only Insertion)
 	- Overview About BST (AVL, Red-Black, Splay)
+	- Binary Heap
 - Recursive Programming
   - Four code examples
 - Sort
